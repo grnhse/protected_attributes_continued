@@ -84,6 +84,11 @@ module ActiveRecord
 
       protected
 
+      # This function has been removed from ActiveRecord 7.2.x, so we monkey-patch it back in
+      def assign_nested_parameter_attributes(pairs)
+        pairs.each { |k, v| _assign_attribute(k, v) }
+      end
+
       def mass_assignment_options
         @mass_assignment_options ||= {}
       end
