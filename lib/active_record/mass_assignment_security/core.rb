@@ -19,8 +19,12 @@ module ActiveRecord
 
       private
 
-      def init_attributes(attributes, options)
-        assign_attributes(attributes, options)
+      def init_attributes(attributes, options = {})
+        if attributes.is_a?(Hash)
+          assign_attributes(attributes, options)
+        else
+          super(attributes)
+        end
       end
 
       def init_internals
