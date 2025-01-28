@@ -20,7 +20,7 @@ module ActiveRecord
       private
 
       def init_attributes(attributes, options = {})
-        if attributes.is_a?(Hash)
+        if attributes.is_a?(Hash) || attributes.is_a?(ActionController::Parameters)
           assign_attributes(attributes, options)
         else
           super(attributes)
